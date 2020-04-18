@@ -118,7 +118,7 @@ module.exports = {
     const password_md5 = crypto.createHash('md5').update(`'${password}'`).digest('hex')
 console.log(password_md5)
     const login = await connection('users')
-    .select('user_name', 'perm')
+    .select('user_name', 'perm', 'user_id')
     .where({ 
      'user_login': user_login, 
      'password': password_md5
