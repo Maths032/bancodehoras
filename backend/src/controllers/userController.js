@@ -35,12 +35,12 @@ module.exports = {
     }
       
     } catch (err) {
-      return response.status(400).json({error: `${err}Não foi possivel cadastrar o usuario, tente novamente mais tarde.`})
+      return response.status(400).json({error: `${err}Não foi possível cadastrar o usuário, tente novamente mais tarde.`})
     }
   },
 
 
-  async index(request, response){//lista todos os usuarios
+  async index(request, response){//lista todos os usuários
     const users = await connection('users').select('*')
     return response.json(users)
   },
@@ -50,7 +50,7 @@ module.exports = {
     const {id } = request.params
     try {
       await connection('users').delete().where('user_id', id)
-      return response.status(200).json(`O usuario com ID: ${id} foi deletado com sucesso.`)
+      return response.status(200).json(`O usuário com ID: ${id} foi deletado com sucesso.`)
     } catch (error) {
       return response.json(error)
     }
@@ -109,7 +109,7 @@ module.exports = {
         return response.status(500).json('Houve um erro ao tentar alterar a permissão, tente novamente mais tarde')
       }
     }
-    return response.json({ sucess: 'Todos os dados enviados foram atualizados com sucesso'})
+    return response.json({ success: 'Todos os dados enviados foram atualizados com sucesso'})
 
   },
   async login(request, response){

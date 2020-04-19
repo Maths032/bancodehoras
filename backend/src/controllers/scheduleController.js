@@ -22,15 +22,15 @@ module.exports = {
             date: date, 
             hour1: hour
           })
-          return response.json({sucess: 'Sua entrada foi registrada com sucesso.'})
+          return response.json({success: 'Sua entrada foi registrada com sucesso.'})
         } catch (err) {
           return response
           .status(500)
-          .json({error: 'Houve um problema ao registrar seu horario, se o erro permanecer favor  informar a t.i'})
+          .json({error: 'Houve um problema ao registrar seu horário, se o erro permanecer favor  informar a t.i'})
         }
       }
       if (check1 == false) {
-        return response.json({waring: 'Esse Horario já foi registrado, caso esteja incorreto favor solicitar uma correção'})
+        return response.json({waring: 'Esse Horário já foi registrado, caso esteja incorreto favor solicitar uma correção'})
       }
     }
 
@@ -45,17 +45,17 @@ module.exports = {
              user_id: dados.user_id,
              date: date
            })
-          return response.json({sucess: 'Sua saida p/ almoço foi registrada com sucesso.'})
+          return response.json({success: 'Sua saida p/ almoço foi registrada com sucesso.'})
         } catch (err) {
-          console.log('Ao tentar registrar o horario 2 retornou o seguinte erro   ', err)
+          console.log('Ao tentar registrar o horário 2 retornou o seguinte erro   ', err)
           console.log('data enviada: ', dados.date )
           return response
           .status(500)
-          .json({error: 'Houve um problema ao registrar seu horario, se o erro permanecer favor  informar a t.i'})
+          .json({error: 'Houve um problema ao registrar seu horário, se o erro permanecer favor  informar a t.i'})
         }
       }
       if (check2 == 1){
-        return response.json({waring: 'Esse Horario já foi registrado, caso esteja incorreto favor solicitar uma correção'})
+        return response.json({waring: 'Esse Horário já foi registrado, caso esteja incorreto favor solicitar uma correção'})
       }
       if (check2 == 2){
         return response.json({waring: 'Volta do almoço ja foi registrada'})
@@ -80,18 +80,18 @@ module.exports = {
              user_id: dados.user_id,
              date: date
            })
-          return response.json({sucess: 'Sua volta do almoço foi registrada com sucesso.'})
+          return response.json({success: 'Sua volta do almoço foi registrada com sucesso.'})
         } catch (err) {
-          console.log('Ao tentar registrar o horario 3 retornou o seguinte erro   ', err)
+          console.log('Ao tentar registrar o horário 3 retornou o seguinte erro   ', err)
           console.log('data enviada: ', dados.date )
           return response
           .status(500)
-          .json({error: 'Houve um problema ao registrar seu horario, se o erro permanecer favor  informar a t.i'})
+          .json({error: 'Houve um problema ao registrar seu horário, se o erro permanecer favor  informar a t.i'})
         }
       }
       
       if (check3 == 1){
-        return response.json({waring: 'Esse Horario já foi registrado, caso esteja incorreto favor solicitar uma correção'})
+        return response.json({waring: 'Esse Horário já foi registrado, caso esteja incorreto favor solicitar uma correção'})
       }
       if (check3 == 2){
         return response.json({waring: 'Sua saida para o almoço ainda não foi registrada.'})
@@ -112,14 +112,14 @@ module.exports = {
         try {
           await connection('schedule').update({hour4: hour}).where({user_id: dados.user_id, date: date})
 
-          return response.json({sucess: 'Sua saida foi registrada com sucesso.'})
+          return response.json({success: 'Sua saida foi registrada com sucesso.'})
         } catch (err) {
-          console.log('Ao tentar registrar o horario 3 retornou o seguinte erro   ', err)
+          console.log('Ao tentar registrar o horário 3 retornou o seguinte erro   ', err)
           console.log('data enviada: ', dados.date )
 
           return response
           .status(500)
-          .json({error: 'Houve um problema ao registrar seu horario, se o erro permanecer favor  informar a t.i'})
+          .json({error: 'Houve um problema ao registrar seu horário, se o erro permanecer favor  informar a t.i'})
         }
       }
 
