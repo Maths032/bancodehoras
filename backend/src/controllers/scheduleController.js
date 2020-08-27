@@ -10,11 +10,11 @@ module.exports = {
     console.log(hour)
     
     
-    if (dados.schedule == 1) {
+    if (dados.schedule == 1) {//registra a entrada
 
       const check1 = await checkSchedule(dados.schedule, date , dados.user_id)
       
-      if (check1 == true) {
+      if (check1 == true) {// quando liberado pelo check cria o registro do dia e escreve a entrada.
 
         try {
            await connection('schedule').insert({
@@ -22,7 +22,7 @@ module.exports = {
             date: date, 
             hour1: hour
           })
-          return response.json({success: 'Sua entrada foi registrada com sucesso.'})
+          return response.json({success: `Sua entrada foi registrada com sucesso as ${hour}.`})
         } catch (err) {
           return response
           .status(500)
@@ -34,18 +34,18 @@ module.exports = {
       }
     }
 
-    if (dados.schedule == 2) {
+    if (dados.schedule == 2) {//registra saida para o almoço
 
       const check2 = await checkSchedule(dados.schedule, date , dados.user_id)
       
-      if (check2 == 0) { 
+      if (check2 == 0) { //quando aprovado pelo check libera o registro de saia p/ almoço
 
         try {
            await connection('schedule').update({hour2: hour}).where({
              user_id: dados.user_id,
              date: date
            })
-          return response.json({success: 'Sua saida p/ almoço foi registrada com sucesso.'})
+          return response.json({success: `Sua saida p/ almoço foi registrada com sucesso as ${hour}.`})
         } catch (err) {
           console.log('Ao tentar registrar o horário 2 retornou o seguinte erro   ', err)
           console.log('data enviada: ', dados.date )
@@ -69,18 +69,18 @@ module.exports = {
     
     }    
 
-    if (dados.schedule == 3) {
+    if (dados.schedule == 3) {//registra volta do almoço
 
       const check3 = await checkSchedule(dados.schedule, date , dados.user_id)
       
-      if (check3 == 0) { 
+      if (check3 == 0) { //registra volta do almoço quando o check liberar
 
         try {
            await connection('schedule').update({hour3: hour}).where({
              user_id: dados.user_id,
              date: date
            })
-          return response.json({success: 'Sua volta do almoço foi registrada com sucesso.'})
+          return response.json({success: `Sua volta do almoço foi registrada com sucesso as ${hour}.`})
         } catch (err) {
           console.log('Ao tentar registrar o horário 3 retornou o seguinte erro   ', err)
           console.log('data enviada: ', dados.date )
@@ -104,7 +104,7 @@ module.exports = {
       }
     }
 
-    if (dados.schedule == 4) {
+    if (dados.schedule == 4) {//registra saida
 
       const check4 = await checkSchedule(4, date, dados.user_id, dados.confirm)
 
@@ -112,7 +112,7 @@ module.exports = {
         try {
           await connection('schedule').update({hour4: hour}).where({user_id: dados.user_id, date: date})
 
-          return response.json({success: 'Sua saida foi registrada com sucesso.'})
+          return response.json({success: `Sua saida foi registrada com sucesso as ${hour}.`})
         } catch (err) {
           console.log('Ao tentar registrar o horário 3 retornou o seguinte erro   ', err)
           console.log('data enviada: ', dados.date )

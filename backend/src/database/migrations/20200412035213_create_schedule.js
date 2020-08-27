@@ -19,6 +19,8 @@ exports.up = function(knex) {
     table.time('hour2')
     table.time('hour3')
     table.time('hour4')
+
+    table.time('total_hours')
   })  
 };
 exports.down = function(knex) {

@@ -18,9 +18,14 @@ exports.up = function(knex) {
   })
   .alterTable('schedule_correction', function(table3) {//cria relacionamentos da tabela schedule_correction
 
-    table3.foreign('schedule_id').references('schedule_id').inTable('schedule')
+    table3.foreign('request_user_id').references('user_id').inTable('users')
+
+    table3.foreign('correction_user_id').references('user_id').inTable('users')
 
     table3.foreign('obs_id').references('obs_id').inTable('obs')
+
+
+    
 
   })
 };

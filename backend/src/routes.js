@@ -1,5 +1,6 @@
 const userController = require('./controllers/userController');
 const scheduleController = require('./controllers/scheduleController');
+const testFunctions = require('./controllers/testFunctions');
 
 const express = require('express');
 
@@ -7,7 +8,7 @@ routes = express()
 
 routes.use(express.json())
 
-
+routes.post('/teste', testFunctions.test)
 
 routes.get('/user/list', userController.index)
 routes.post('/user/create', userController.create)
